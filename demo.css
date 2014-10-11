@@ -1,0 +1,129 @@
+/*
+	Todd Motto Labs
+	URL: www.toddmotto.com
+*/
+
+/*------------------------------------*\
+    JS Event Handlers
+\*------------------------------------*/
+
+body {
+	background:#34495E;
+	/*background-image: url("background.png");*/
+	background-repeat: no-repeat;
+	background-size: 99% 232%;
+	color:#FFF;
+	font-weight:900;
+	font-size:15px;
+	/*position: fixed;*/
+	/*background-position: fixed;*/
+}
+.main {
+	margin:0 auto;
+	margin-top: 8%;
+	max-width:800px;
+	background: #ECEFF1;
+	border-radius:10px;
+	height: auto;
+}
+/* Links */
+/*#links {
+	list-style:none;
+}
+.dynamic-link {
+	cursor:pointer;
+	background:#1ABC9C;
+	padding:15px;
+	margin:5px 0;
+	border-radius:5px;
+}
+.dynamic-success {
+	background:#16A085 url(../img/success.svg) no-repeat 98% center;
+}*/
+/* Generation form */
+.generate {
+	background:#ECEFF1;
+	padding:25px;
+	margin:25px;
+	border-radius:5px;
+}
+.generate-title {
+	text-align:center;
+	color:#34495E;
+	font-size:22px;
+}
+.generate-input,
+.generate-submit {
+	text-align:center;
+	font-size:16px;
+	border:0;
+	border-radius:5px;
+	padding:15px 15px;
+	margin:15px 0 0;
+	width:100%;
+}
+.generate-input {
+	background:#FFF;
+	color:#34495E;
+	outline:0;
+	border:2px solid #FFF;
+}
+.generate-input:focus {
+	border-color:#1ABC9C;
+}
+.generate-submit {
+	cursor:pointer;
+	color:#FFF;
+	background:#1ABC9C;
+	margin-bottom: 30px;
+	width: 150px;
+}
+
+
+
+/*PLUSSSSSS*/
+    #logo {
+        width: 64px;
+        height: 64px;
+    }
+    #inputbox {
+        display: none;
+        background: none repeat scroll 0% 0% #1ABC9C;
+        border-radius: 15px;
+        max-width: 600px;
+
+    }
+    #inputbox form {
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+    .input-form, .input-text {
+        vertical-align: middle;
+    }
+    .h1 {
+        font-family: 'Lobster', cursive;
+        color: #34495E;
+    }
+    table {
+        background: #34495E;
+        color: #fff;
+        border-radius: .4em;
+        margin: 1em 0;
+        min-width: 500px;
+        font-family: 'Ubuntu', sans-serif;  
+        
+    }
+    tr {
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+    }
+    th, td {
+        text-align: left;
+        width: 120px;
+    }
+    th{
+color: #dd5;
+    }
+    td{
+        color: #F0F0EB;
+    }

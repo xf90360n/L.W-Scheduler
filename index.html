@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Holly the FINALLLSSSS!!</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" /> -->
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link href='demo.css' rel='stylesheet' type='text/css' />
+
+    <style>
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo"></div>
+        <img id="logo" src="student_xing.png" alt="Logo?">
+    </div>
+    <div class="wrapper">
+        <center>
+            <div class="main">
+                <h1 class="h1">Test Schedule</h1>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Subject</th>
+                            <th>Operation</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <!-- Using JavaScript to generate items; remember to generate delete button for each-->
+                    </tbody>
+                </table>
+                <br>
+                <button id="newTask" class="generate-submit">New Task!</button>
+            </div>
+            <br>
+
+            <div></div>
+            <div id="inputbox">
+                <form class="input-form">
+
+                    <span>
+                        <label for="date">Date</label>
+                        <br>
+                        <input id="date" type="text" name="Date" class="input-text" placeholder="__/__/____">
+                        <br>
+                        <label for="subject">Subject</label>
+                        <br>
+                        <input id="subject" type="text" name="Subject" class="input-text" placeholder="XXX 101">
+                    </span>
+                    <br>
+                    <button id="submit" class="generate-button">Submit</button>
+                    &nbsp;
+                    <button id="reset" class="generate-button">Reset</button>
+
+                    <br>
+                    <button id="deleteAll" class="generate-button">Delete All</button>
+                </form>
+            </div>
+            <!-- <a href="http://www.baidu.com">asdf</a>
+        <div id="log"></div> -->
+        </center>
+
+    </div>
+
+</body>
+<script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.mask/0.9.0/jquery.mask.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+<script language="javascript">
+var jsonObj = [];
+var ID = 1;
+$ = jQuery.noConflict(true);
+$(document).ready(function() {
+    $("#date").mask("9999/99/99"); //static mask
+});
+
+
+$("button").click(function(event) {
+    event.preventDefault();
+
+});
+$("#newTask").click(function(event) {
+    console.log($(this).text());
+    /* Act on the event */
+    if ($(this).text() == "New Task!") {
+        $("#inputbox").slideDown('400', function() {
+            $("#newTask").text("Cancel!");
+        });
+    } else {
+        $("#inputbox").slideUp('400', function() {
+            $("#newTask").text("New Task!");
+        });
+    }
+
+
+});
+$("#submit").click(function(event) {
+    if ($("#date").val() == "" || $("#subject").val() == "")
+        alert("Cannot accept Empty");
+    else{createJSON();
+        $("#newTask").click();
+    }
+        
+    console.log(jsonObj.length);
+});
+
+$("#reset").click(function(event) {
+    /* Act on the event */
+    //event.preventDefault();
+    $("#date").val("");
+    $("#subject").val("");
+});
+$("#deleteAll").click(function(event) {
+    /* Act on the event */
+    deleteAll();
+});
+
+// $(".delete").click(function(event) {
+//     /* Act on the event */
+//     console.log("tried");
+//     $(this).parent().parent().remove();
+// });
+
+
+
+function deleteAll() {
+    var amount = jsonObj.length;
+    console.log(amount);
+    while (amount > 0) {
+        popOutJSONList();
+        amount--;
+    }
+    $("#tbody").empty();
+}
+
+function popOutJSONList() {
+    jsonObj.pop();
+    ID--;
+}
+
+function pushIntoJSONList(obj) {
+    jsonObj.push(obj);
+}
+
+function createJSON() {
+    //jsonObj = [];
+
+    date = $("#date").val();
+    subject = $("#subject").val();
+    var item = {};
+    item["ID"] = ID;
+    item["date"] = date;
+    item["subject"] = subject;
+    ID++;
+    jsonObj.push(item);
+    //var obj = $.parseJSON(item);
+    console.log(item);
+
+    //jsonString = JSON.stringify(jsonObj);
+    //console.log(obj);
+    //console.log(jsonString);
+
+    addToTable(item);
+}
+
+ function addToTable(object){
+      $("<tr></tr>", {id: object["ID"]}).appendTo("#tbody");
+      $("<td></td>", {html: object["date"]}).appendTo("#"+object["ID"]);
+      $("<td></td>", {html: object["subject"]}).appendTo("#"+object["ID"]);
+      $("<td></td>", {html: "<button class='delete' onclick='deleteRow(this)'> Delete </button>"}).appendTo("#"+object["ID"]);
+ }
+
+function deleteRow(target) {
+        $(target).parent().parent().remove();
+        console.log(target);
+    }
+    // $("a").click(function(event) {
+    //     event.preventDefault();
+    //     $("<div>")
+    //         .append("default " + event.type + " prevented"+ $.fn.jquery)
+    //         .appendTo("#log");
+    // });
+</script>
+
+</html>
